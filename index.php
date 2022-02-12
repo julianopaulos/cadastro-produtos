@@ -1,9 +1,8 @@
 <?php
-require __DIR__ . '/vendor/autoload.php';
-
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/config/config.php';
 use App\Controllers\Home;
 
-define("BASE_URL", "http://localhost/teste_cadastro_produtos/");
 
 // Create Router instance
 $router = new \Bramus\Router\Router();
