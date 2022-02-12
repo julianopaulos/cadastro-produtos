@@ -1,0 +1,18 @@
+{
+    "name": "juliano/teste_cadastro_produtos",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "julianopaulos",
+            "email": "julianopaulo.santos@hotmail.com"
+        }
+    ],
+    "require": {
+        "bramus/router": "^1.6",
+        "twig/twig": "^3.3"
+    }
+}
