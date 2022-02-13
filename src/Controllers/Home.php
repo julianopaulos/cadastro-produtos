@@ -20,7 +20,11 @@ class Home{
     function loadProduct() {
         $header = $this->twig->load("header/header.php");
         $template = $this->twig->load("producthome/producthome.php");
-        echo $template->render(['header' => $header->render(['BASE_URL' => BASE_URL, 'PAGE_NAME' => 'Listagem de Produtos']), 'BASE_URL_CSS' => BASE_URL."src/Views/producthome"]);
+        echo $template->render([
+            'header' => $header->render(['BASE_URL' => BASE_URL, 
+            'PAGE_NAME' => 'Listagem de Produtos']), 
+            'BASE_URL_ASSETS' => BASE_URL."src/Views/producthome"
+        ]);
     }
 
     function loadTag() {
@@ -28,7 +32,7 @@ class Home{
         $template = $this->twig->load("taghome/taghome.php");
         echo $template->render([
             'header' => $header->render(['BASE_URL' => BASE_URL, 'PAGE_NAME' => 'Listagem de Tags']),
-            'BASE_URL_CSS' => BASE_URL."src/Views/taghome",
+            'BASE_URL_ASSETS' => BASE_URL."src/Views/taghome",
             'tags' => $this->find->getTags()
         ]);
     }

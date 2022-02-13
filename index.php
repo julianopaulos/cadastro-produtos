@@ -3,6 +3,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/config/config.php';
 use App\Controllers\Home;
 use App\Controllers\Register;
+use App\Controllers\Remove;
 
 // Create Router instance
 $router = new \Bramus\Router\Router();
@@ -25,7 +26,7 @@ $router->get('/taghome', function(){
 });
 
 
-//----------------------------------------Register
+//----------------------------------------REGISTER
 $register = new Register();
 $router->get('/productregister', function(){
     global $register;
@@ -44,6 +45,14 @@ $router->post('/tagregister', function(){
     global $register;
     echo $register->registerTag();
 });
+
+//------------------------------DELETE
+$delete = new Remove();
+$router->delete('/tagdelete/(\d+)', function($id){
+    global $delete;
+    echo $delete->deleteTag($id);
+});
+
 
 // Run it!
 $router->run();

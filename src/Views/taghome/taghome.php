@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos</title>
-    <link rel="stylesheet" type="text/css" href="{{BASE_URL_CSS}}/style/style.css">
+    <link rel="stylesheet" type="text/css" href="{{BASE_URL_ASSETS}}/style/style.css">
 </head>
 {{header | raw}}
 <body>
@@ -15,14 +15,20 @@
             <span>Nome</span>
         </section>
         
-        <section class="tags">
-            {% for tag in tags %}
-                <span></span>
+        
+        {% for tag in tags %}
+            <section class="tag" id="{{tag.id}}">
+                <div>
+                    <a href="./edittag/{{tag.id}}" class="material-icons" id="edit">edit</a>
+                    <span class="material-icons" id="delete" onclick="deleteTag('{{tag.id}}')">delete</span>
+                </div>
                 <span>{{ tag.name }}</span>
-            {% else %}
-                <h3 align="center">Nenhuma tag cadastrado!</h3>
-            {% endfor %}
-        </section>
+            </section>
+        {% else %}
+            <h3 align="center">Nenhuma tag cadastrado!</h3>
+        {% endfor %}
+        
     </main>
+<script src="{{BASE_URL_ASSETS}}/js/delete.js"></script>
 </body>
 </html>

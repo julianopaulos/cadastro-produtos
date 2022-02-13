@@ -15,7 +15,9 @@
             <input type="text" id="name" name="name" required/>
             <label for="tags">Tags</label>
             <Select id="tags" name="tags" placeholder="Escolha as tags do produto" multiple="multiple" required>
-                <option></option>
+                {% for tag in tags %}
+                    <option value="{{tag.id}}">{{tag.name}}</option>
+                {% endfor %}
             </Select>
             <button type="submit">Cadastrar</button>
         </form>

@@ -1,3 +1,5 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 <link rel="stylesheet" href="{{BASE_URL}}/assets/style/global.css" />
 <script src="{{BASE_URL}}/assets/js/axios.min.js"></script>
 <input type="checkbox" id="check">

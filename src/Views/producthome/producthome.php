@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos</title>
-    <link rel="stylesheet" type="text/css" href="{{BASE_URL_CSS}}/style/style.css">
+    <link rel="stylesheet" type="text/css" href="{{BASE_URL_ASSETS}}/style/style.css">
 </head>
 {{header | raw}}
 <body>
