@@ -13,7 +13,7 @@ body{
     border-radius:5px;
 }
 
-.content .header{
+.content .header, .content .tags{
     width: 100%;
     background-color:transparent;
     display: flex;
@@ -23,4 +23,9 @@ body{
     border-bottom: 2px solid rgba(185, 185, 185, .5);
     font-size: 1.3em;
     font-weight: bold;
+}
+.content .tags{
+    font-size: 1.2em;
+    border: none;
+    font-weight: normal;
 }

@@ -14,10 +14,23 @@ class Find extends Conn{
     }
 
     public function getProducts(){
-        $this->sql = "SHOW TABLES";
+        $this->sql = "SELECT * FROM product";
         $this->query = $this->connection->prepare($this->sql);
         $this->query->execute();
-        $this->results = $this->query->fetchAll();
+        $this->results = $this->query->fetchAll(\PDO::FETCH_ASSOC);
+        return $this->results;
+    }
+
+    public function getTags(){
+        $this->sql = "SELECT * FROM tag";
+        $this->query = $this->connection->prepare($this->sql);
+        try{
+            $this->query->execute();
+            $this->results = $this->query->fetchAll(\PDO::FETCH_ASSOC);
+        }catch(\PDOException $e){
+            die($e->getMessage());
+        }
+        
         return $this->results;
     }
 }

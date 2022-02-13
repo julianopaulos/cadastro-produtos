@@ -14,7 +14,7 @@ $router->get('/', function(){
     global $home;
     $home->loadProduct();
 });
-$router->get('/home', function(){
+$router->get('/producthome', function(){
     global $home;
     $home->loadProduct();
 });
@@ -27,11 +27,11 @@ $router->get('/taghome', function(){
 
 //----------------------------------------Register
 $register = new Register();
-$router->get('/register', function(){
+$router->get('/productregister', function(){
     global $register;
     $register->loadProduct();
 });
-$router->post('/register', function(){
+$router->post('/productregister', function(){
     global $register;
     echo $register->registerProduct();
 });

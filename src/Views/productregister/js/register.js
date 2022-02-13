@@ -18,7 +18,7 @@ form.addEventListener('submit', async function(e){
         return false;
     }
 
-    await axios.post("./register", {
+    await axios.post("./productregister", {
         name: inputName.value,
         tags: selectedTags
     })

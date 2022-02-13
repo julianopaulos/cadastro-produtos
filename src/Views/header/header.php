@@ -24,13 +24,13 @@
 		</a>
 
     <h3 align="center">Produtos</h3>
-		<a href="./home">
+		<a href="./producthome">
 			<div class="link">Listagem</div>
 		</a>
-		<a href="./register">
+		<a href="./productregister">
 			<div class="link">Cadastro</div>
 		</a>
-		<a href="">
+		<a href="./productedit">
 			<div class="link">Edição</div>
 		</a>
     

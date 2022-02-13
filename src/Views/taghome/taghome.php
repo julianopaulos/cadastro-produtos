@@ -13,14 +13,14 @@
         <section class="header">
             <span>Ações</span>
             <span>Nome</span>
-            <span>Tag</span>
         </section>
-        <section class="products">
-            {% for product in products %}
-                <span>{{ product.name }}</span>
-                <span>{{ product.tag }}</span>
+        
+        <section class="tags">
+            {% for tag in tags %}
+                <span></span>
+                <span>{{ tag.name }}</span>
             {% else %}
-                <h3 align="center">Nenhum produto ainda cadastrado!</h3>
+                <h3 align="center">Nenhuma tag cadastrado!</h3>
             {% endfor %}
         </section>
     </main>
