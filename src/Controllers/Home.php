@@ -23,7 +23,8 @@ class Home{
         echo $template->render([
             'header' => $header->render(['BASE_URL' => BASE_URL, 
             'PAGE_NAME' => 'Listagem de Produtos']), 
-            'BASE_URL_ASSETS' => BASE_URL."src/Views/producthome"
+            'BASE_URL_ASSETS' => BASE_URL."src/Views/producthome",
+            'products' => $this->find->getProducts()
         ]);
     }
 

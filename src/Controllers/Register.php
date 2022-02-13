@@ -38,10 +38,26 @@ class Register{
     }
 
     function registerProduct(){
+
         if(empty($_POST) || !isset($_POST['name']) || empty($_POST['name']) || !isset($_POST['tags']) || empty($_POST['tags'])){
             return json_encode(["error"=> true,"message" => "Todos os campos são obrigatórios e não podem estar vazios!"]);
         }
-        return json_encode(["error" => false,"message" => "Produto cadastrado com sucesso!"]);
+
+        if(!is_array($_POST['tags']) || count($_POST['tags']) === 0){
+            return json_encode(["error"=> true,"message" => "Tag inválida!"]);
+        }
+
+        $name = InputValidator::inputSanitizer($_POST['name']);
+        if($this->find->verifyProductName($name)['products'] > 0){
+            return json_encode(["error" => true,"message" => "Já existe produco com o mesmo nome cadastrado!"]);
+        }
+
+        if($product_id = $this->insert->saveProduct($name)){
+            $this->insert->saveProductTags($_POST['tags'], $product_id);
+            return json_encode(["error" => false,"message" => "Produto cadastrado com sucesso!"]);
+        }
+
+        return json_encode(["error" => true,"message" => "Erro ao cadastrar produto no banco de dados!"]);
     }
 
 

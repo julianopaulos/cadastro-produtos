@@ -27,8 +27,8 @@ body{
     width: 50%;
     min-height:35px;
     font-size: 1em;
-    color:rgba(35, 35, 35, 0.6);
-    
+    color:rgba(35, 35, 35, 0.8);
+    text-align:center;    
 }
 .content .product_form label{
     width: 50%;
@@ -41,7 +41,16 @@ body{
     border-radius: 3px;
     width: 50%;
     min-height:30px;
+    font-size: 1.2em;
+    text-align: center;
+    color:rgba(35, 35, 35, 0.8);
 }
+
+.content .product_form select option{
+    height:22px;
+    padding: 2px
+}
+
 
 .content .product_form button{
     border: none;

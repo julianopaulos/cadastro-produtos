@@ -13,16 +13,22 @@
         <section class="header">
             <span>Ações</span>
             <span>Nome</span>
-            <span>Tag</span>
+            <span>Tags</span>
         </section>
-        <section class="products">
-            {% for product in products %}
+        
+        {% for product in products %}
+            <section class="product">
+                <div>
+                    <a href="./edittag/{{tag.id}}" class="material-icons" id="edit">edit</a>
+                    <span class="material-icons" id="delete" onclick="deleteTag('{{tag.id}}')">delete</span>
+                </div>
                 <span>{{ product.name }}</span>
-                <span>{{ product.tag }}</span>
-            {% else %}
+                <span>{{ product.tags }}</span>
+            </section>
+        {% else %}
                 <h3 align="center">Nenhum produto ainda cadastrado!</h3>
-            {% endfor %}
-        </section>
+        {% endfor %}
+        
     </main>
 </body>
 </html>

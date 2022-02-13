@@ -13,7 +13,7 @@ body{
     border-radius:5px;
 }
 
-.content .header{
+.content .header, .content .product{
     width: 100%;
     background-color:transparent;
     display: flex;
@@ -23,4 +23,26 @@ body{
     border-bottom: 2px solid rgba(185, 185, 185, .5);
     font-size: 1.3em;
     font-weight: bold;
+}
+
+.content .product{
+    font-size: 1.2em;
+    border: none;
+    font-weight: normal;
+}
+
+
+#edit, #delete{
+    color: rgba(50, 50, 50, 1);
+    text-decoration: none;
+    border: 2px solid black;
+    border-radius:4px;
+    cursor: pointer;
+    padding: 2px;
+    transition: .3s;
+}
+
+#edit:hover, #delete:hover{
+    border: 2px solid rgba(50, 50, 50, .7);
+    background-color: rgba(230, 230, 230, .7);
 }
