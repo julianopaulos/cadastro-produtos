@@ -3,10 +3,10 @@
 namespace App\Models\Conn;
 
 class Conn{
-    private static $dbname = '';
-    private static $dbhost = '';
-    private static $dbuser = '';
-    private static $dbpass = '';
+    private static $dbname = DB_NAME;
+    private static $dbhost = DB_HOST;
+    private static $dbuser = DB_USER;
+    private static $dbpass = DB_PASS;
     private static $connection = null;
 
     private static function setConn(){

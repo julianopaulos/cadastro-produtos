@@ -9,4 +9,7 @@
     <li>
         Execute os comandos SQL do arquivo db.sql no gerenciador de banco de dados;
     </li>
+    <li>
+        Inserir as credenciais do banco de dados no arquivo config/config.php.
+    </li>
 </ul>

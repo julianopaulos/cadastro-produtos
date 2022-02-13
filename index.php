@@ -2,7 +2,9 @@
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/config/config.php';
 use App\Controllers\Home;
+use App\Models\Find;
 
+$find = new Find();
 
 // Create Router instance
 $router = new \Bramus\Router\Router();
