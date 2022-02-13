@@ -25,7 +25,10 @@ $router->get('/register', function(){
     global $register;
     $register->load();
 });
-
+$router->post('/register', function(){
+    global $register;
+    echo $register->register();
+});
 
 // Run it!
 $router->run();
