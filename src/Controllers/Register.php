@@ -78,6 +78,10 @@ class Register{
         }
 
         $name = InputValidator::inputSanitizer($_POST['name']);
+        if($this->find->verifyTagName($name)['tags'] > 0){
+            return json_encode(["error" => true,"message" => "Já existe tag com o mesmo nome cadastrada!"]);
+        }
+
         if($name && $this->insert->saveTag($name)){
             return json_encode(["error" => false,"message" => "Tag cadastrada com sucesso!"]);
         }

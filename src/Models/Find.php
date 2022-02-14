@@ -50,6 +50,31 @@ class Find extends Conn{
         return $this->results;
     }
 
+    public function getProductById($id){
+        $this->sql = "
+                    SELECT 
+                        p.id,
+                        p.name,
+                        GROUP_CONCAT(t.id) AS tags 
+                    FROM
+                        product p
+                    INNER JOIN product_tag pt ON pt.product_id = p.id
+                    INNER JOIN tag t ON t.id = pt.tag_id
+                    WHERE id = :id
+                    GROUP BY p.id
+        ";
+        try{
+            $this->query = $this->connection->prepare($this->sql);
+            $this->query->bindParam(':id', $id, \PDO::PARAM_INT);
+            $this->query->execute();
+            $this->results = $this->query->fetchAll(\PDO::FETCH_ASSOC);
+        }catch(\PDOException $e){
+            echo($e->getMessage());
+        }
+        
+        return $this->results;
+    }
+
     public function getTags(){
         $this->sql = "SELECT * FROM tag";
         try{
@@ -63,8 +88,36 @@ class Find extends Conn{
         return $this->results;
     }
 
+    public function getTagById($id){
+        $this->sql = "SELECT * FROM tag WHERE id = :id";
+        try{
+            $this->query = $this->connection->prepare($this->sql);
+            $this->query->bindParam(':id', $id, \PDO::PARAM_INT);
+            $this->query->execute();
+            $this->results = $this->query->fetchAll(\PDO::FETCH_ASSOC);
+        }catch(\PDOException $e){
+            echo($e->getMessage());
+        }
+        
+        return $this->results;
+    }
+
     function verifyProductName($name){
         $this->sql = "SELECT COUNT(id) AS products FROM product WHERE name = :name";
+        try{
+            $this->query = $this->connection->prepare($this->sql);
+            $this->query->bindParam(':name', $name, \PDO::PARAM_STR);
+            $this->query->execute();
+            $this->results = $this->query->fetch();
+        }catch(\PDOException $e){
+            echo($e->getMessage());
+        }
+        
+        return $this->results;
+    }
+
+    function verifyTagName($name){
+        $this->sql = "SELECT COUNT(id) AS tags FROM tag WHERE name = :name";
         try{
             $this->query = $this->connection->prepare($this->sql);
             $this->query->bindParam(':name', $name, \PDO::PARAM_STR);

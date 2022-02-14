@@ -3,6 +3,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/config/config.php';
 use App\Controllers\Home;
 use App\Controllers\Register;
+use App\Controllers\Edit;
 use App\Controllers\Remove;
 
 // Create Router instance
@@ -26,6 +27,7 @@ $router->get('/taghome', function(){
 });
 
 
+
 //----------------------------------------REGISTER
 $register = new Register();
 $router->get('/productregister', function(){
@@ -45,6 +47,21 @@ $router->post('/tagregister', function(){
     global $register;
     echo $register->registerTag();
 });
+
+
+
+//------------------------------EDIT
+$edit = new Edit();
+$router->get('/tagedit/(\d+)', function($id){
+    global $edit;
+    $edit->loadTag($id);
+});
+$router->get('/productedit/(\d+)', function($id){
+    global $edit;
+    $edit->loadProduct($id);
+});
+
+
 
 //------------------------------DELETE
 $delete = new Remove();
