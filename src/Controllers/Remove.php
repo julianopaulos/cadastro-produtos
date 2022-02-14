@@ -19,13 +19,19 @@ class Remove{
         $this->twig = new Environment($this->loader);
     }
 
-    function deleteProduct(){
-        if(empty($_DELETE) || !isset($_DELETE['id']) || empty($_DELETE['id'])){
+    function deleteProduct(int $id){
+        if(empty($id)){
             return json_encode(["error"=> true,"message" => "Id do produto não recebido!"]);
-        }else if(isset($_DELETE['id']) && !is_int($_DELETE['id'])){
+        }else if(isset($id) && !is_int($id)){
             return json_encode(["error"=> true,"message" => "Id do produto deve ser do tipo int!"]);
         }
-        return json_encode(["error" => false,"message" => "Produto cadastrado com sucesso!"]);
+
+        $id = InputValidator::inputSanitizer($id);
+        if($id && $this->delete->deleteProductTagByProductId($id) && $this->delete->deleteProduct($id)){
+            return json_encode(["error" => false,"message" => "Produto excluído com sucesso!"]);
+        }
+
+        return json_encode(["error" => true,"message" => "Ocorreu um erro ao excluir o produto!"]);
     }
 
     function deleteTag(int $id){
@@ -34,10 +40,12 @@ class Remove{
         }else if(isset($id) && !is_int($id)){
             return json_encode(["error"=> true,"message" => "Id da tag deve ser do tipo int!"]);
         }
+
         $id = InputValidator::inputSanitizer($id);
         if($id && $this->delete->deleteProductTagByTagId($id) && $this->delete->deleteTag($id)){
             return json_encode(["error" => false,"message" => "Tag excluída com sucesso!"]);
         }
+        
         return json_encode(["error" => true,"message" => "Ocorreu um erro ao excluir a tag!"]);
         
     }

@@ -52,6 +52,10 @@ $router->delete('/tagdelete/(\d+)', function($id){
     global $delete;
     echo $delete->deleteTag($id);
 });
+$router->delete('/productdelete/(\d+)', function($id){
+    global $delete;
+    echo $delete->deleteProduct($id);
+});
 
 
 // Run it!

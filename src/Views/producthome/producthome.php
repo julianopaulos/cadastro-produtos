@@ -21,10 +21,10 @@
             </thead>
             <tbody>
                 {% for product in products %}
-                    <tr  class="product">
+                    <tr  class="product" id="{{product.id}}">
                             <td>
-                                <a href="./edittag/{{tag.id}}" class="material-icons" id="edit">edit</a>
-                                <span class="material-icons" id="delete" onclick="deleteTag('{{tag.id}}')">delete</span>
+                                <a href="./editproduct/{{product.id}}" class="material-icons" id="edit">edit</a>
+                                <span class="material-icons" id="delete" onclick="deleteProduct('{{product.id}}')">delete</span>
                             </td>
                             <td>{{ product.name }}</td>
                     </tr>
@@ -38,5 +38,6 @@
             </tbody>
         </table>
     </main>
+<script src="{{BASE_URL_ASSETS}}/js/delete.js"></script>
 </body>
 </html>
