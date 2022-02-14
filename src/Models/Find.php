@@ -60,14 +60,14 @@ class Find extends Conn{
                         product p
                     INNER JOIN product_tag pt ON pt.product_id = p.id
                     INNER JOIN tag t ON t.id = pt.tag_id
-                    WHERE id = :id
+                    WHERE p.id = :id
                     GROUP BY p.id
         ";
         try{
             $this->query = $this->connection->prepare($this->sql);
             $this->query->bindParam(':id', $id, \PDO::PARAM_INT);
             $this->query->execute();
-            $this->results = $this->query->fetchAll(\PDO::FETCH_ASSOC);
+            $this->results = $this->query->fetch();
         }catch(\PDOException $e){
             echo($e->getMessage());
         }
@@ -94,7 +94,7 @@ class Find extends Conn{
             $this->query = $this->connection->prepare($this->sql);
             $this->query->bindParam(':id', $id, \PDO::PARAM_INT);
             $this->query->execute();
-            $this->results = $this->query->fetchAll(\PDO::FETCH_ASSOC);
+            $this->results = $this->query->fetch();
         }catch(\PDOException $e){
             echo($e->getMessage());
         }
@@ -102,7 +102,7 @@ class Find extends Conn{
         return $this->results;
     }
 
-    function verifyProductName($name){
+    public function verifyProductName($name){
         $this->sql = "SELECT COUNT(id) AS products FROM product WHERE name = :name";
         try{
             $this->query = $this->connection->prepare($this->sql);
@@ -116,7 +116,7 @@ class Find extends Conn{
         return $this->results;
     }
 
-    function verifyTagName($name){
+    public function verifyTagName($name){
         $this->sql = "SELECT COUNT(id) AS tags FROM tag WHERE name = :name";
         try{
             $this->query = $this->connection->prepare($this->sql);

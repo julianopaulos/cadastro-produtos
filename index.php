@@ -56,6 +56,12 @@ $router->get('/tagedit/(\d+)', function($id){
     global $edit;
     $edit->loadTag($id);
 });
+$router->put('/tagedit/(\d+)', function($id){
+    global $edit;
+    $_PUT = json_decode(file_get_contents("php://input"),true);
+    echo $edit->editTag($id, $_PUT['name']);
+});
+
 $router->get('/productedit/(\d+)', function($id){
     global $edit;
     $edit->loadProduct($id);

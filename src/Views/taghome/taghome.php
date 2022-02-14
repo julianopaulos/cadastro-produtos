@@ -23,7 +23,7 @@
             {% for tag in tags %}
                 <tr  class="tag" id="{{tag.id}}">
                     <td>
-                        <a href="./edittag/{{tag.id}}" class="material-icons" id="edit">edit</a>
+                        <a href="./tagedit/{{tag.id}}" class="material-icons" id="edit">edit</a>
                         <span class="material-icons" id="delete" onclick="deleteTag('{{tag.id}}')">delete</span>
                     </td>
                     <td>{{ tag.name }}</td>

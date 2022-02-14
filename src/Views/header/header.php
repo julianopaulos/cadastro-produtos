@@ -15,26 +15,22 @@
 	<nav>
 
     <h3 align="center">Tags</h3>
-		<a href="./taghome">
-			<div class="link">Listagem</div>
-		</a>
-		<a href="./tagregister">
-			<div class="link">Cadastro</div>
-		</a>
-		<a href="">
-			<div class="link">Edição</div>
-		</a>
+	<a href="{{BASE_URL}}taghome">
+		<div class="link">Listagem</div>
+	</a>
+	<a href="{{BASE_URL}}tagregister">
+		<div class="link">Cadastro</div>
+	</a>
 
     <h3 align="center">Produtos</h3>
-		<a href="./producthome">
-			<div class="link">Listagem</div>
-		</a>
-		<a href="./productregister">
-			<div class="link">Cadastro</div>
-		</a>
-		<a href="./productedit">
-			<div class="link">Edição</div>
-		</a>
-    
+	<a href="{{BASE_URL}}producthome">
+		<div class="link">Listagem</div>
+	</a>
+	<a href="{{BASE_URL}}productregister">
+		<div class="link">Cadastro</div>
+	</a>
+	<a href="{{BASE_URL}}productreport">
+		<div class="link">Relatório de relevância</div>
+	</a>
 	</nav>
 </div>

@@ -3,6 +3,7 @@ let form = document.forms.tag_form;
 
 form.addEventListener('submit', async function(e){
     e.preventDefault();
+    let id = this.id.value;
     let inputName = this.name;
 
     if(!inputName.value){
@@ -10,7 +11,7 @@ form.addEventListener('submit', async function(e){
         return false;
     }
 
-    await axios.post("./tagregister", {
+    await axios.put(`./${id}`, {
         name: inputName.value
     })
     .then(response => {
@@ -21,10 +22,9 @@ form.addEventListener('submit', async function(e){
             return false;
         }
         alert(response.message);
-        form.reset();
     })
     .catch(error => {
         console.error(error);
-        alert("Erro inesperado ao cadastrar tag!");
+        alert("Erro inesperado ao atualizar tag!");
     });
 });

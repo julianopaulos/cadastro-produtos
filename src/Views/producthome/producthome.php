@@ -9,7 +9,7 @@
 </head>
 {{header | raw}}
 <body>
-    <main class="content">
+<main class="content">
         <table>
             <thead class="header">
                 <th>
@@ -23,7 +23,7 @@
                 {% for product in products %}
                     <tr  class="product" id="{{product.id}}">
                             <td>
-                                <a href="./editproduct/{{product.id}}" class="material-icons" id="edit">edit</a>
+                                <a href="./productedit/{{product.id}}" class="material-icons" id="edit">edit</a>
                                 <span class="material-icons" id="delete" onclick="deleteProduct('{{product.id}}')">delete</span>
                             </td>
                             <td>{{ product.name }}</td>
@@ -31,13 +31,12 @@
                 {% else %}
                     <tr>
                         <td colspan="2">
-                            <h3 align="center">Nenhum produto cadastrado!</h3>
+                            <h3 align="center">Nenhum produto ainda cadastrado!</h3>
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     </main>
-<script src="{{BASE_URL_ASSETS}}/js/delete.js"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@ class Insert extends Conn{
         $this->connection = $this->getConnection();
     }
 
-    function saveProduct($name){
+    public function saveProduct($name){
         $this->sql = "
             INSERT INTO product (name)
             VALUES(:name)
@@ -28,7 +28,7 @@ class Insert extends Conn{
         return $this->results;
     }
 
-    function saveProductTags($tags, $product_id){
+    public function saveProductTags($tags, $product_id){
         $error = false;
         $this->sql = "
             INSERT INTO product_tag (product_id, tag_id)
@@ -55,7 +55,7 @@ class Insert extends Conn{
         return $this->results;
     }
 
-    function saveTag($name){
+    public function saveTag($name){
         $this->sql = "
             INSERT INTO tag (name)
             VALUES(:name)

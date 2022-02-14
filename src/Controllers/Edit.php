@@ -11,13 +11,13 @@ use Twig\Environment;
 class Edit{
     private $loader;
     private $twig;
-    private $Update;
+    private $update;
     private $find;
     function __construct() {
-        $_POST = json_decode(file_get_contents("php://input"),true);
+        $_PUT = json_decode(file_get_contents("php://input"),true);
 
         $this->find = new Find();
-        $this->Update = new Update();
+        $this->update = new Update();
 
         $this->loader = new FilesystemLoader("src/Views");
         $this->twig = new Environment($this->loader);
@@ -35,8 +35,8 @@ class Edit{
         ]);
     }
 
-    function editProduct(){
-        if(empty($_POST) || !isset($_POST['name']) || empty($_POST['name']) || !isset($_POST['tags']) || empty($_POST['tags'])){
+    function editProduct(int $id, string $name = '', array $tags = []){
+        if(empty($_PUT) || !isset($_PUT['name']) || empty($_PUT['name']) || !isset($_PUT['tags']) || empty($_PUT['tags'])){
             return json_encode(["error"=> true,"message" => "Todos os campos são obrigatórios e não podem estar vazios!"]);
         }
         return json_encode(["error" => false,"message" => "Produto cadastrado com sucesso!"]);
@@ -55,11 +55,22 @@ class Edit{
         ]);
     }
 
-    function editTag(){
-        if(empty($_POST) || !isset($_POST['name']) || empty($_POST['name']) || !isset($_POST['tags']) || empty($_POST['tags'])){
+    function editTag(int $id, string $name = '') {
+        
+        if(empty($id) || empty($name)){
             return json_encode(["error"=> true,"message" => "Todos os campos são obrigatórios e não podem estar vazios!"]);
         }
-        return json_encode(["error" => false,"message" => "Produto cadastrado com sucesso!"]);
+        $id = InputValidator::inputSanitizer($id);
+        $name = InputValidator::inputSanitizer($name);
+        if($this->find->verifyTagName($name)['tags'] > 0){
+            return json_encode(["error" => true,"message" => "Já existe tag com o mesmo nome cadastrada!"]);
+        }
+
+        if($id && $name && $this->update->updateTag($id, $name)){
+            return json_encode(["error" => false,"message" => "Tag atualizada com sucesso!"]);
+        }
+
+        return json_encode(["error" => true,"message" => "Erro ao atualizar tag!"]);
     }
 
     

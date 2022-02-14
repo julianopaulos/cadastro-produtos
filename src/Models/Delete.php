@@ -12,7 +12,7 @@ class Delete extends Conn{
         $this->connection = $this->getConnection();
     }
 
-    function deleteProduct(int $product_id) {
+    public function deleteProduct(int $product_id) {
         $this->sql = "
             DELETE FROM product
             WHERE id = :id
@@ -27,7 +27,7 @@ class Delete extends Conn{
         return $this->results;
     }
 
-    function deleteTag(int $tag_id) {
+    public function deleteTag(int $tag_id) {
         $this->sql = "
             DELETE FROM tag
             WHERE id = :id

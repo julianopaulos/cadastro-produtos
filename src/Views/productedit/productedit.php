@@ -10,34 +10,19 @@
 {{header | raw}}
 <body>
     <main class="content">
-        <table>
-            <thead class="header">
-                <th>
-                    Ações
-                </th>
-                <th>
-                    Nome
-                </th>
-            </thead>
-            <tbody>
-                {% for product in products %}
-                    <tr  class="product" id="{{product.id}}">
-                            <td>
-                                <a href="./editproduct/{{product.id}}" class="material-icons" id="edit">edit</a>
-                                <span class="material-icons" id="delete" onclick="deleteProduct('{{product.id}}')">delete</span>
-                            </td>
-                            <td>{{ product.name }}</td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="2">
-                            <h3 align="center">Nenhum produto cadastrado!</h3>
-                        </td>
-                    </tr>
+        <form class="product_form" name="product_form">
+            <label for="name">Nome do Produto</label>
+            <input type="text" id="name" name="name" required/>
+            <label for="tags">Tags</label>
+            <Select id="tags" name="tags" placeholder="Escolha as tags do produto" multiple="multiple" required>
+                {% for tag in tags %}
+                    <option value="{{tag.id}}">{{tag.name}}</option>
                 {% endfor %}
-            </tbody>
-        </table>
+            </Select>
+            <button type="submit">Cadastrar</button>
+        </form>
     </main>
-<script src="{{BASE_URL_ASSETS}}/js/delete.js"></script>
+    <script src="{{BASE_URL_ASSETS}}/js/edit.js"></script>
+    
 </body>
 </html>
