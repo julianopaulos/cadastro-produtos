@@ -13,34 +13,24 @@ body{
     border-radius:5px;
 }
 
-.content table{
+.content .header, .content .product{
     width: 100%;
-    text-align: center;
-    table-layout: fixed;
-}
-.content table td, .content table th{
+    background-color:transparent;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     padding: 5px 0;
     border-bottom: 2px solid rgba(185, 185, 185, .5);
-}
-.content table td{
-    padding: 8px 0;
-}
-.content table tr:last-child td{
-    border-bottom: none;
-}
-
-.content table .header{
-    background-color:transparent;
     font-size: 1.3em;
     font-weight: bold;
 }
-.content table .header th{
-    padding: 10px 0;
-}
-.content .tag{
+
+.content .product{
     font-size: 1.2em;
+    border: none;
     font-weight: normal;
 }
+
 
 #edit, #delete{
     color: rgba(50, 50, 50, 1);

@@ -10,24 +10,33 @@
 {{header | raw}}
 <body>
     <main class="content">
-        <section class="header">
-            <span>Ações</span>
-            <span>Nome</span>
-        </section>
-        
-        
-        {% for tag in tags %}
-            <section class="tag" id="{{tag.id}}">
-                <div>
-                    <a href="./edittag/{{tag.id}}" class="material-icons" id="edit">edit</a>
-                    <span class="material-icons" id="delete" onclick="deleteTag('{{tag.id}}')">delete</span>
-                </div>
-                <span>{{ tag.name }}</span>
-            </section>
-        {% else %}
-            <h3 align="center">Nenhuma tag cadastrado!</h3>
-        {% endfor %}
-        
+        <table>
+            <thead class="header">
+                <th>
+                    Ações
+                </th>
+                <th>
+                    Nome
+                </th>
+            </thead>
+            <tbody>
+            {% for tag in tags %}
+                <tr  class="tag" id="{{tag.id}}">
+                    <td>
+                        <a href="./edittag/{{tag.id}}" class="material-icons" id="edit">edit</a>
+                        <span class="material-icons" id="delete" onclick="deleteTag('{{tag.id}}')">delete</span>
+                    </td>
+                    <td>{{ tag.name }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="2">
+                        <h3 align="center">Nenhuma tag cadastrado!</h3>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </main>
 <script src="{{BASE_URL_ASSETS}}/js/delete.js"></script>
 </body>

@@ -13,18 +13,37 @@ class Find extends Conn{
         $this->connection = $this->getConnection();
     }
 
-    public function getProducts(){
+    public function getProductsRel(){
         $this->sql = "
-            SELECT p.id, p.name, GROUP_CONCAT(t.name) AS tags FROM product p
+            SELECT 
+                p.id,
+                p.name,
+                GROUP_CONCAT(t.name) AS tags 
+            FROM
+                product p
             INNER JOIN product_tag pt ON pt.product_id = p.id
             INNER JOIN tag t ON t.id = pt.tag_id
             GROUP BY p.id
+            ORDER BY COUNT(t.id) DESC
         ";
         try{
             $this->query = $this->connection->prepare($this->sql);
             $this->query->execute();
             $this->results = $this->query->fetchAll(\PDO::FETCH_ASSOC);
         }catch(\Exception $e){
+            echo($e->getMessage());
+        }
+        
+        return $this->results;
+    }
+
+    public function getProducts(){
+        $this->sql = "SELECT * FROM product";
+        try{
+            $this->query = $this->connection->prepare($this->sql);
+            $this->query->execute();
+            $this->results = $this->query->fetchAll(\PDO::FETCH_ASSOC);
+        }catch(\PDOException $e){
             echo($e->getMessage());
         }
         

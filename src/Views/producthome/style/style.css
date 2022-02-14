@@ -13,21 +13,33 @@ body{
     border-radius:5px;
 }
 
-.content .header, .content .product{
+.content table{
     width: 100%;
-    background-color:transparent;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    text-align: center;
+    table-layout: fixed;
+}
+.content table td, .content table th{
     padding: 5px 0;
     border-bottom: 2px solid rgba(185, 185, 185, .5);
+}
+.content table td{
+    padding: 8px 0;
+}
+.content table tr:last-child td{
+    border-bottom: none;
+}
+
+.content table .header{
+    background-color:transparent;
     font-size: 1.3em;
     font-weight: bold;
+}
+.content table .header th{
+    padding: 10px 0;
 }
 
 .content .product{
     font-size: 1.2em;
-    border: none;
     font-weight: normal;
 }
 

@@ -10,25 +10,33 @@
 {{header | raw}}
 <body>
     <main class="content">
-        <section class="header">
-            <span>Ações</span>
-            <span>Nome</span>
-            <span>Tags</span>
-        </section>
-        
-        {% for product in products %}
-            <section class="product">
-                <div>
-                    <a href="./edittag/{{tag.id}}" class="material-icons" id="edit">edit</a>
-                    <span class="material-icons" id="delete" onclick="deleteTag('{{tag.id}}')">delete</span>
-                </div>
-                <span>{{ product.name }}</span>
-                <span>{{ product.tags }}</span>
-            </section>
-        {% else %}
-                <h3 align="center">Nenhum produto ainda cadastrado!</h3>
-        {% endfor %}
-        
+        <table>
+            <thead class="header">
+                <th>
+                    Ações
+                </th>
+                <th>
+                    Nome
+                </th>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr  class="product">
+                            <td>
+                                <a href="./edittag/{{tag.id}}" class="material-icons" id="edit">edit</a>
+                                <span class="material-icons" id="delete" onclick="deleteTag('{{tag.id}}')">delete</span>
+                            </td>
+                            <td>{{ product.name }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="2">
+                            <h3 align="center">Nenhum produto ainda cadastrado!</h3>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </main>
 </body>
 </html>
