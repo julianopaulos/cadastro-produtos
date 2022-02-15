@@ -17,8 +17,10 @@
 <h3>Query de extração do relatório de relevância de produtos</h3>
 
 ```
-    SELECT 
-        t.id, t.name, GROUP_CONCAT(p.name)
+    SELECT
+        t.id AS tag_id,
+        t.name AS tag_name,
+        GROUP_CONCAT(p.name SEPARATOR ', ') AS products
     FROM
         tag t
             INNER JOIN
