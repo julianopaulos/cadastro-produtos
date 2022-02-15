@@ -20,7 +20,7 @@
     SELECT 
         t.id AS tag_id,
         t.name AS tag_name,
-        GROUP_CONCAT('<li>', p.name SEPARATOR '</li><br>') AS products
+        GROUP_CONCAT('<li>', p.name SEPARATOR '</li>') AS products
     FROM
         tag t
             INNER JOIN
