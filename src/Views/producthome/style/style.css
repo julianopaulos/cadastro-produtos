@@ -55,6 +55,13 @@ body{
     transition: .3s;
 }
 
-#edit:hover, #delete:hover{
+#edit{
+    background-color: rgba(50, 205, 50, .8);
+}
+
+#delete:hover{
     background-color: rgba(230, 100, 100, .8);
 }
+#edit:hover{
+    background-color: rgba(100, 230, 100, .8);
+} 
