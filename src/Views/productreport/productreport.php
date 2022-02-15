@@ -25,7 +25,7 @@
                     <td>
                         {{ product.tag_name }}
                     </td>
-                    <td>{{ product.products }}</td>
+                    <td align="left"><ul>{{ product.products|raw }}</ul></td>
                 </tr>
                 {% else %}
                 <tr>
