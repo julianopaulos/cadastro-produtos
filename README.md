@@ -15,8 +15,8 @@
 </ul>
 
 <h3>Query de extração do relatório de relevância de produtos</h3>
-```
-    SELECT 
+
+```SELECT 
         t.id, t.name, GROUP_CONCAT(p.name)
     FROM
         tag t
@@ -25,11 +25,4 @@
             INNER JOIN
         product p ON p.id = pt.product_id
     GROUP BY t.id
-```
-
-```ruby
-require 'redcarpet'
-markdown = Redcarpet.new("Hello World!")
-puts markdown.to_html
-coloca markdown.to_html
 ```
