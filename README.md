@@ -28,4 +28,5 @@
             INNER JOIN
         product p ON p.id = pt.product_id
     GROUP BY t.id
+    ORDER BY COUNT(t.id) DESC, t.id ASC
 ```

@@ -15,7 +15,7 @@
                 <th>
                     Tag
                 </th>
-                <th>
+                <th align="left">
                     Produtos
                 </th>
             </thead>
