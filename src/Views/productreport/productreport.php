@@ -13,31 +13,29 @@
         <table>
             <thead class="header">
                 <th>
-                    Ações
+                    Tag
                 </th>
                 <th>
-                    Nome
+                    Produtos
                 </th>
             </thead>
             <tbody>
-            {% for tag in tags %}
-                <tr  class="tag" id="{{tag.id}}">
+                {% for product in products_rel %}
+                <tr class="data" id="{{product.id}}">
                     <td>
-                        <a href="./tagedit/{{tag.id}}" class="material-icons" id="edit">edit</a>
-                        <span class="material-icons" id="delete" onclick="deleteTag('{{tag.id}}')">delete_outline</span>
+                        {{ product.tag_name }}
                     </td>
-                    <td>{{ tag.name }}</td>
+                    <td>{{ product.products }}</td>
                 </tr>
-            {% else %}
+                {% else %}
                 <tr>
                     <td colspan="2">
-                        <h3 align="center">Nenhuma tag cadastrado!</h3>
+                        <h3 align="center">Nenhum item a ser apresentado!</h3>
                     </td>
                 </tr>
-            {% endfor %}
+                {% endfor %}
             </tbody>
         </table>
     </main>
-<script src="{{BASE_URL_ASSETS}}/js/delete.js"></script>
 </body>
 </html>

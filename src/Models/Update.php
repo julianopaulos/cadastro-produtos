@@ -22,8 +22,7 @@ class Update extends Conn{
             $this->query = $this->connection->prepare($this->sql);
             $this->query->bindParam(':name', $name, \PDO::PARAM_STR);
             $this->query->bindParam(':id', $id, \PDO::PARAM_INT);
-            $this->query->execute();
-            $this->results = $this->connection->lastInsertId();
+            $this->results = $this->query->execute();
         }catch(\PDOException $e){
             die($e->getMessage());
         }

@@ -16,15 +16,16 @@ class Find extends Conn{
     public function getProductsRel(){
         $this->sql = "
             SELECT 
-                p.id,
-                p.name,
-                GROUP_CONCAT(t.name) AS tags 
+                t.id AS tag_id,
+                t.name AS tag_name,
+                GROUP_CONCAT(p.name SEPARATOR ', ') AS products
             FROM
-                product p
-            INNER JOIN product_tag pt ON pt.product_id = p.id
-            INNER JOIN tag t ON t.id = pt.tag_id
-            GROUP BY p.id
-            ORDER BY COUNT(t.id) DESC
+                tag t
+                    INNER JOIN
+                product_tag pt ON pt.tag_id = t.id
+                    INNER JOIN
+                product p ON p.id = pt.product_id
+            GROUP BY t.id
         ";
         try{
             $this->query = $this->connection->prepare($this->sql);
@@ -102,11 +103,17 @@ class Find extends Conn{
         return $this->results;
     }
 
-    public function verifyProductName($name){
+    public function verifyProductName($name, int $id = null){
         $this->sql = "SELECT COUNT(id) AS products FROM product WHERE name = :name";
+        if($id){
+            $this->sql .= " AND id <> :id";
+        }
         try{
             $this->query = $this->connection->prepare($this->sql);
             $this->query->bindParam(':name', $name, \PDO::PARAM_STR);
+            if($id){
+                $this->query->bindParam(':id', $id, \PDO::PARAM_INT);
+            }
             $this->query->execute();
             $this->results = $this->query->fetch();
         }catch(\PDOException $e){

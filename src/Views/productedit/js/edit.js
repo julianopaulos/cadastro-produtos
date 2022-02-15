@@ -3,6 +3,7 @@ let form = document.forms.product_form;
 
 form.addEventListener('submit', async function(e){
     e.preventDefault();
+    let id = this.id.value;
     let inputName = this.name;
     let tagSelect = this.tags;
     let selectedTags = [];
@@ -18,7 +19,7 @@ form.addEventListener('submit', async function(e){
         return false;
     }
 
-    await axios.post("./productregister", {
+    await axios.put(`./${id}`, {
         name: inputName.value,
         tags: selectedTags
     })
@@ -31,10 +32,9 @@ form.addEventListener('submit', async function(e){
             return false;
         }
         alert(response.message);
-        form.reset();
     })
     .catch(error => {
         console.error(error);
-        alert("Erro inesperado ao cadastrar produto!");
+        alert("Erro inesperado ao atualizar produto!");
     });
 });

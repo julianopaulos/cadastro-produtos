@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,8 +9,9 @@
     <link rel="stylesheet" type="text/css" href="{{BASE_URL_ASSETS}}/style/style.css">
 </head>
 {{header | raw}}
+
 <body>
-<main class="content">
+    <main class="content">
         <table>
             <thead class="header">
                 <th>
@@ -21,22 +23,24 @@
             </thead>
             <tbody>
                 {% for product in products %}
-                    <tr  class="product" id="{{product.id}}">
-                            <td>
-                                <a href="./productedit/{{product.id}}" class="material-icons" id="edit">edit</a>
-                                <span class="material-icons" id="delete" onclick="deleteProduct('{{product.id}}')">delete</span>
-                            </td>
-                            <td>{{ product.name }}</td>
-                    </tr>
+                <tr class="product" id="{{product.id}}">
+                    <td>
+                        <a href="./productedit/{{product.id}}" class="material-icons" id="edit">edit</a>
+                        <span class="material-icons" id="delete" onclick="deleteProduct('{{product.id}}')">delete_outline</span>
+                    </td>
+                    <td>{{ product.name }}</td>
+                </tr>
                 {% else %}
-                    <tr>
-                        <td colspan="2">
-                            <h3 align="center">Nenhum produto ainda cadastrado!</h3>
-                        </td>
-                    </tr>
+                <tr>
+                    <td colspan="2">
+                        <h3 align="center">Nenhum produto ainda cadastrado!</h3>
+                    </td>
+                </tr>
                 {% endfor %}
             </tbody>
         </table>
     </main>
+    <script src="{{BASE_URL_ASSETS}}/js/delete.js"></script>
 </body>
+
 </html>

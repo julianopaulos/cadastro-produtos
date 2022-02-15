@@ -29,7 +29,7 @@ class Register{
     function loadProduct() {
         $header = $this->twig->load("header/header.php");
         $template = $this->twig->load("productregister/productregister.php");
-        echo $template->render([
+        return $template->render([
             'header' => $header->render(['BASE_URL' => BASE_URL,
             'PAGE_NAME' => 'Cadastro de Produto']),
             'BASE_URL_ASSETS' => BASE_URL."src/Views/productregister",
@@ -69,7 +69,10 @@ class Register{
     function loadTag() {
         $header = $this->twig->load("header/header.php");
         $template = $this->twig->load("tagregister/tagregister.php");
-        echo $template->render(['header' => $header->render(['BASE_URL' => BASE_URL, 'PAGE_NAME' => 'Cadastro de Tag']), 'BASE_URL_ASSETS' => BASE_URL."src/Views/tagregister"]);
+        return $template->render([
+            'header' => $header->render(['BASE_URL' => BASE_URL, 'PAGE_NAME' => 'Cadastro de Tag']),
+            'BASE_URL_ASSETS' => BASE_URL."src/Views/tagregister"
+        ]);
     }
 
     function registerTag(){

@@ -14,16 +14,22 @@ $router->setNamespace('\App\Controllers');
 $home = new Home();
 $router->get('/', function(){
     global $home;
-    $home->loadProduct();
-});
-$router->get('/producthome', function(){
-    global $home;
-    $home->loadProduct();
+    echo $home->loadTag();
 });
 
 $router->get('/taghome', function(){
     global $home;
-    $home->loadTag();
+    echo $home->loadTag();
+});
+
+$router->get('/producthome', function(){
+    global $home;
+    echo $home->loadProduct();
+});
+
+$router->get('/productreport', function(){
+    global $home;
+    echo $home->loadProductReport();
 });
 
 
@@ -32,7 +38,7 @@ $router->get('/taghome', function(){
 $register = new Register();
 $router->get('/productregister', function(){
     global $register;
-    $register->loadProduct();
+    echo $register->loadProduct();
 });
 $router->post('/productregister', function(){
     global $register;
@@ -41,7 +47,7 @@ $router->post('/productregister', function(){
 
 $router->get('/tagregister', function(){
     global $register;
-    $register->loadTag();
+    echo $register->loadTag();
 });
 $router->post('/tagregister', function(){
     global $register;
@@ -54,7 +60,7 @@ $router->post('/tagregister', function(){
 $edit = new Edit();
 $router->get('/tagedit/(\d+)', function($id){
     global $edit;
-    $edit->loadTag($id);
+    echo $edit->loadTag($id);
 });
 $router->put('/tagedit/(\d+)', function($id){
     global $edit;
@@ -64,7 +70,13 @@ $router->put('/tagedit/(\d+)', function($id){
 
 $router->get('/productedit/(\d+)', function($id){
     global $edit;
-    $edit->loadProduct($id);
+    echo $edit->loadProduct($id);
+});
+
+$router->put('/productedit/(\d+)', function($id){
+    global $edit;
+    $_PUT = json_decode(file_get_contents("php://input"),true);
+    echo $edit->editProduct($id, $_PUT['name'], $_PUT['tags']);
 });
 
 

@@ -20,7 +20,7 @@ class Home{
     function loadProduct() {
         $header = $this->twig->load("header/header.php");
         $template = $this->twig->load("producthome/producthome.php");
-        echo $template->render([
+        return $template->render([
             'header' => $header->render(['BASE_URL' => BASE_URL, 
             'PAGE_NAME' => 'Listagem de Produtos']), 
             'BASE_URL_ASSETS' => BASE_URL."src/Views/producthome",
@@ -28,10 +28,21 @@ class Home{
         ]);
     }
 
+    function loadProductReport() {
+        $header = $this->twig->load("header/header.php");
+        $template = $this->twig->load("productreport/productreport.php");
+        return $template->render([
+            'header' => $header->render(['BASE_URL' => BASE_URL,
+            'PAGE_NAME' => 'Relatório de relevância']), 
+            'BASE_URL_ASSETS' => BASE_URL."src/Views/productreport",
+            'products_rel' => $this->find->getProductsRel()
+        ]);
+    }
+
     function loadTag() {
         $header = $this->twig->load("header/header.php");
         $template = $this->twig->load("taghome/taghome.php");
-        echo $template->render([
+        return $template->render([
             'header' => $header->render(['BASE_URL' => BASE_URL, 'PAGE_NAME' => 'Listagem de Tags']),
             'BASE_URL_ASSETS' => BASE_URL."src/Views/taghome",
             'tags' => $this->find->getTags()
