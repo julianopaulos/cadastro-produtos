@@ -16,7 +16,8 @@
 
 <h3>Query de extração do relatório de relevância de produtos</h3>
 
-```SELECT 
+```
+    SELECT 
         t.id, t.name, GROUP_CONCAT(p.name)
     FROM
         tag t
