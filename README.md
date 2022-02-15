@@ -15,7 +15,7 @@
 </ul>
 
 <h3>Query de extração do relatório de relevância de produtos</h3>
-*
+```
     SELECT 
         t.id, t.name, GROUP_CONCAT(p.name)
     FROM
@@ -25,4 +25,4 @@
             INNER JOIN
         product p ON p.id = pt.product_id
     GROUP BY t.id
-*
+```
