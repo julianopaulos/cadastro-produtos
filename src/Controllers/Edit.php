@@ -37,7 +37,7 @@ class Edit{
         $tags = $product['tags'];
         return $template->render([
             'header' => $header->render(['BASE_URL' => BASE_URL,
-            'PAGE_NAME' => 'Cadastro de Produto']),
+            'PAGE_NAME' => 'Edição de Produto']),
             'BASE_URL_ASSETS' => BASE_URL."src/Views/productedit",
             'product' => $product,
             'product_tags' => $tags,
@@ -76,7 +76,7 @@ class Edit{
         $template = $this->twig->load("tagedit/tagedit.php");
         return $template->render([
             'header' => $header->render(['BASE_URL' => BASE_URL,
-            'PAGE_NAME' => 'Cadastro de Tag']),
+            'PAGE_NAME' => 'Edição de Tag']),
             'BASE_URL_ASSETS' => BASE_URL."src/Views/tagedit",
             'tag' => $this->find->getTagById($id)
         ]);

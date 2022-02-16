@@ -93,4 +93,10 @@ nav a {
 .header .logo {
   font-size: 25px;
   font-weight: bold;
+  font-style: italic;
+  transition: .3s;
+  cursor: pointer;
+}
+.header .logo:hover {
+  border-bottom: 2px solid rgba(255, 255, 255, .6);
 }

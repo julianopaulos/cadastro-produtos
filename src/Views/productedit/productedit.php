@@ -24,7 +24,7 @@
                     {%endif%}
                 {% endfor %}
             </Select>
-            <button type="submit">Cadastrar</button>
+            <button type="submit">Atualizar</button>
         </form>
     </main>
     <script src="{{BASE_URL_ASSETS}}/js/edit.js"></script>

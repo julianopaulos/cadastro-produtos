@@ -10,6 +10,7 @@
 </label>
 <div class="header">
   <span class="logo">{{PAGE_NAME}}</span>
+  <div></div>
 </div>
 <div class="barra">
 	<nav>

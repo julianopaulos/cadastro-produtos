@@ -60,3 +60,10 @@ body{
 .content .tag_form button:hover{
     background-color: rgba(120, 120, 250, .8);
 }
+
+
+@media screen and (max-width: 600px) {
+    .content{
+        width: 100%;
+    }
+}
