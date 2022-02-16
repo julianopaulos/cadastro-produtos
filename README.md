@@ -13,7 +13,7 @@
         Execute os comandos SQL do arquivo db.sql no gerenciador de banco de dados;
     </li>
     <li>
-        Inserir as credenciais do banco de dados no arquivo config/config.php.
+        Inserir/trocar as credenciais do banco de dados no arquivo config/config.php nas constantes DB_HOST, DB_NAME, DB_USER e DB_PASS.
     </li>
 </ul>
 
