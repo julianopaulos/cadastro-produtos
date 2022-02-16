@@ -4,10 +4,10 @@
 <h3>Passo a passo de execução</h3>
 <ul>
     <li>
-        Crie uma pasta com o nome <code>teste_cadastro_produtos</code> na raíz, e, dentro dela, dê o git clone do projeto, ou, escolha outro nome e dê o git clone do projeto;
+        Crie uma pasta com o nome <code>teste_cadastro_produtos</code> na raíz do servidor (wamp ou xampp), e, dentro dela, dê o git clone do projeto, ou, escolha outro nome e dê o git clone do projeto;
     </li>
     <li>
-        Caso tenha criada uma pasta com nome diferente, troque o nome <code>teste_cadastro_produtos</code> da constante <code>BASE_URL</code> dentro do arquivo <code>config/config.php</code> com o nome da nova pasta criada. Caso a estilização
+        Caso tenha criado uma pasta com nome diferente, troque o nome <code>teste_cadastro_produtos</code> da constante <code>BASE_URL</code> dentro do arquivo <code>config/config.php</code> com o nome da nova pasta criada. Caso a estilização
         não seja carregada, ou ocorra erro na conexão com o banco, verifique o arquivo <code>config/config.php</code>;
     </li>
     <li>
