@@ -85,11 +85,11 @@ $router->put('/productedit/(\d+)', function($id){
 $delete = new Remove();
 $router->delete('/tagdelete/(\d+)', function($id){
     global $delete;
-    echo $delete->deleteTag($id);
+    echo $delete->deleteTag(intval($id));
 });
 $router->delete('/productdelete/(\d+)', function($id){
     global $delete;
-    echo $delete->deleteProduct($id);
+    echo $delete->deleteProduct(intval($id));
 });
 
 
