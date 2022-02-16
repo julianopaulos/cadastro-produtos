@@ -7,7 +7,7 @@
         Crie uma pasta com o nome <code>teste_cadastro_produtos</code> na raíz, e, dentro dela, dê o git clone do projeto, ou, escolha outro nome e dê o git clone do projeto;
     </li>
     <li>
-        Caso tenha criada uma pasta com nome diferente, troque o nome da constante <code>BASE_URL</code> dentro do arquivo <code>config/config.php</code> com o nome da nova pasta criada
+        Caso tenha criada uma pasta com nome diferente, troque o nome <code>teste_cadastro_produtos</code> da constante <code>BASE_URL</code> dentro do arquivo <code>config/config.php</code> com o nome da nova pasta criada
     </li>
     <li>
         Execute os comandos SQL do arquivo db.sql no gerenciador de banco de dados;
