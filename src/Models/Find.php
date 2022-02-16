@@ -104,7 +104,7 @@ class Find extends Conn{
         return $this->results;
     }
 
-    public function verifyProductName($name, int $id = null){
+    public function verifyProductName($name, $id = null){
         $this->sql = "SELECT COUNT(id) AS products FROM product WHERE name = :name";
         if($id){
             $this->sql .= " AND id <> :id";
@@ -124,11 +124,17 @@ class Find extends Conn{
         return $this->results;
     }
 
-    public function verifyTagName($name){
+    public function verifyTagName($name, $id = null){
         $this->sql = "SELECT COUNT(id) AS tags FROM tag WHERE name = :name";
+        if($id){
+            $this->sql .= " AND id <> :id";
+        }
         try{
             $this->query = $this->connection->prepare($this->sql);
             $this->query->bindParam(':name', $name, \PDO::PARAM_STR);
+            if($id){
+                $this->query->bindParam(':id', $id, \PDO::PARAM_INT);
+            }
             $this->query->execute();
             $this->results = $this->query->fetch();
         }catch(\PDOException $e){

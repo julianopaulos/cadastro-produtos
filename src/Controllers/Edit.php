@@ -89,7 +89,7 @@ class Edit{
         }
         $id = InputValidator::inputSanitizer($id);
         $name = InputValidator::inputSanitizer($name);
-        if($this->find->verifyTagName($name)['tags'] > 0){
+        if($this->find->verifyTagName($name, $id)['tags'] > 0){
             return json_encode(["error" => true,"message" => "Já existe tag com o mesmo nome cadastrada!"]);
         }
 
