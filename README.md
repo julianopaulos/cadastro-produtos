@@ -11,7 +11,7 @@
         não seja carregada, ou ocorra erro na conexão com o banco, verifique o arquivo <code>config/config.php</code>;
     </li>
     <li>
-        Execute os comandos SQL do arquivo db.sql no gerenciador de banco de dados;
+        Execute os comandos SQL do arquivo <code>db.sql</code> no gerenciador de banco de dados;
     </li>
     <li>
         Inserir/trocar as credenciais do banco de dados no arquivo <code>config/config.php</code> nas constantes 
