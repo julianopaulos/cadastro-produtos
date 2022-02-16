@@ -40,23 +40,27 @@ class Register{
     function registerProduct(){
 
         if(empty($_POST) || !isset($_POST['name']) || empty($_POST['name']) || !isset($_POST['tags']) || empty($_POST['tags'])){
+            http_response_code(400);
             return json_encode(["error"=> true,"message" => "Todos os campos são obrigatórios e não podem estar vazios!"]);
         }
 
         if(!is_array($_POST['tags']) || count($_POST['tags']) === 0){
+            http_response_code(401);
             return json_encode(["error"=> true,"message" => "Tag inválida!"]);
         }
 
         $name = InputValidator::inputSanitizer($_POST['name']);
         if($this->find->verifyProductName($name)['products'] > 0){
-            return json_encode(["error" => true,"message" => "Já existe produco com o mesmo nome cadastrado!"]);
+            http_response_code(401);
+            return json_encode(["error" => true,"message" => "Já existe produto com o mesmo nome cadastrado!"]);
         }
 
         if($product_id = $this->insert->saveProduct($name)){
             $this->insert->saveProductTags($_POST['tags'], $product_id);
+            http_response_code(201);
             return json_encode(["error" => false,"message" => "Produto cadastrado com sucesso!"]);
         }
-
+        http_response_code(500);
         return json_encode(["error" => true,"message" => "Erro ao cadastrar produto no banco de dados!"]);
     }
 
@@ -77,18 +81,21 @@ class Register{
 
     function registerTag(){
         if(empty($_POST) || !isset($_POST['name']) || empty($_POST['name'])){
-            return json_encode(["error"=> true,"message" => "Todos os campos são obrigatórios e não podem estar vazios!"]);
+            http_response_code(400);
+            return json_encode(["error"=> true,"message" => "Preencha o nome da tag!"]);
         }
 
         $name = InputValidator::inputSanitizer($_POST['name']);
         if($this->find->verifyTagName($name)['tags'] > 0){
+            http_response_code(401);
             return json_encode(["error" => true,"message" => "Já existe tag com o mesmo nome cadastrada!"]);
         }
 
         if($name && $this->insert->saveTag($name)){
+            http_response_code(201);
             return json_encode(["error" => false,"message" => "Tag cadastrada com sucesso!"]);
         }
-        
+        http_response_code(500);
         return json_encode(["error" => true,"message" => "Erro no cadastro da tag, verifique o campo enviado!"]);
     }
 

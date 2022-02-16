@@ -48,10 +48,12 @@ class Edit{
     function editProduct(int $id, string $name = '', $tags = []){
 
         if(!is_array($tags) || count($tags) === 0){
+            http_response_code(400);
             return json_encode(["error"=> true,"message" => "Deve ser enviada ao menos uma tag!"]);
         }
 
         if(empty($id) || empty($name)){
+            http_response_code(400);
             return json_encode(["error"=> true,"message" => "Todos os campos são obrigatórios e não podem estar vazios!"]);
         }
 
@@ -59,13 +61,15 @@ class Edit{
         $name = InputValidator::inputSanitizer($name);
 
         if($this->find->verifyProductName($name, $id)['products'] > 0){
+            http_response_code(401);
             return json_encode(["error" => true,"message" => "Já existe produco com o mesmo nome cadastrado!"]);
         }
         
         if($id && $name && $this->update->updateProduct($id, $name) && $this->delete->deleteProductTagByProductId($id) && $this->insert->saveProductTags($tags, $id)){
+            http_response_code(201);
             return json_encode(["error" => false,"message" => "Produto atualizado com sucesso!"]);
         }
-
+        http_response_code(500);
         return json_encode(["error" => true,"message" => "Ocorreu um erro ao atualizar o produto e suas tags!"]);
     }
 
@@ -85,18 +89,21 @@ class Edit{
     function editTag(int $id, string $name = '') {
         
         if(empty($id) || empty($name)){
+            http_response_code(400);
             return json_encode(["error"=> true,"message" => "Todos os campos são obrigatórios e não podem estar vazios!"]);
         }
         $id = InputValidator::inputSanitizer($id);
         $name = InputValidator::inputSanitizer($name);
         if($this->find->verifyTagName($name, $id)['tags'] > 0){
+            http_response_code(401);
             return json_encode(["error" => true,"message" => "Já existe tag com o mesmo nome cadastrada!"]);
         }
 
         if($id && $name && $this->update->updateTag($id, $name)){
+            http_response_code(201);
             return json_encode(["error" => false,"message" => "Tag atualizada com sucesso!"]);
         }
-
+        http_response_code(500);
         return json_encode(["error" => true,"message" => "Erro ao atualizar tag!"]);
     }
 

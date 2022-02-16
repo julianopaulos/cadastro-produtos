@@ -34,6 +34,12 @@ form.addEventListener('submit', async function(e){
         alert(response.message);
     })
     .catch(error => {
+        if(error.response && error.response.data && error.response.data.message){
+            inputName.style.borderBottom = "2px solid red";
+            tagSelect.style.borderBottom = "2px solid red";
+            alert(error.response.data.message);
+            return false;
+        }
         console.error(error);
         alert("Erro inesperado ao atualizar produto!");
     });

@@ -11,7 +11,7 @@ form.addEventListener('submit', async function(e){
     }
 
     await axios.post("./tagregister", {
-        name: inputName.value
+        //name: inputName.value
     })
     .then(response => {
         response = response.data;
@@ -24,7 +24,12 @@ form.addEventListener('submit', async function(e){
         form.reset();
     })
     .catch(error => {
+        if(error.response && error.response.data && error.response.data.message){
+            inputName.style.borderBottom = "2px solid red";
+            alert(error.response.data.message);
+            return false;
+        }
         console.error(error);
-        alert("Erro inesperado ao cadastrar tag!");
+        alert("Erro inesperado ao cadastrar tag! ");
     });
 });
